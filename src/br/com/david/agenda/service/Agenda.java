@@ -7,22 +7,40 @@ import java.util.List;
 
 public class Agenda {
 
-    List<Contato> contatos = new ArrayList<>();
+    private List<Contato> contatos = new ArrayList<>();
 
-    public void adicionarContato() {
-
+    public Agenda() {
     }
 
-    public void listarContatos() {
-
+    public Agenda(List<Contato> contatos) {
+        this.contatos = contatos;
     }
 
-    public Contato buscarContatoPorNome(String nome, List<Contato> contatos) {
-        for (Contato c : contatos) {
-            if (c.getNome().equalsIgnoreCase(nome)) {
-                return c;
+    public void cadastrarContato(String nome, String telefone, String email) {
+        Contato novoContato = new Contato(nome, telefone, email);
+
+        this.contatos.add(novoContato);
+
+        System.out.println("Contato " + nome + " cadastrado com sucesso!");
+    }
+
+    public List<Contato> listarContatos() {
+
+        System.out.println("===> ***** Lista de Contatos ***** <===");
+        for (Contato contato : this.contatos) {
+            System.out.println(contato);
+        }
+        return this.contatos;
+    }
+
+    public Contato buscarContatoPorNome(String nome) {
+        for (Contato contatoAtual : this.contatos) {
+            if(contatoAtual.getNome().equalsIgnoreCase(nome)) {
+                System.out.println("Contato encontrado " + contatoAtual.getNome());
+                return contatoAtual;
             }
         }
+        System.out.println("Contato com o nome " + nome + " não encontrado.");
         return null;
     }
 }
