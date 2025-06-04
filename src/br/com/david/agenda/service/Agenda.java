@@ -43,4 +43,33 @@ public class Agenda {
         System.out.println("Contato com o nome " + nome + " não encontrado.");
         return null;
     }
+
+    public boolean editarContato(String nomeAntigo, String novoNome, String novoTelefone, String novoEmail) {
+
+        Contato contatoParaEditar = buscarContatoPorNome(nomeAntigo);
+
+        if (contatoParaEditar != null) {
+            contatoParaEditar.setNome(novoNome);
+            contatoParaEditar.setTelefone(novoTelefone);
+            contatoParaEditar.setEmail(novoEmail);
+
+            System.out.println("Contato de '" + nomeAntigo + "' editado para '" + novoNome + "' com sucesso!");
+            return true;
+        }
+
+        System.out.println("O contato de " + nomeAntigo + " não foi encontrado!");
+        return false;
+    }
+
+    public boolean excluirContato(String nome) {
+        return true;
+    }
+
+    public void salvarContatos(String nomeArquivo) {
+
+    }
+
+    public void carregarContatos(String nomeArquivo) {
+
+    }
 }
