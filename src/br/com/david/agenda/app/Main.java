@@ -3,25 +3,44 @@ package br.com.david.agenda.app;
 import br.com.david.agenda.model.Contato;
 import br.com.david.agenda.service.Agenda;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        Agenda minhaAgenda = new Agenda();
+        Scanner scan = new Scanner(System.in);
 
-        minhaAgenda.cadastrarContato("David de Oliveira Silva",
-                "(13) 9 9722-2123","david.oliveira@hotmail.com");
+        System.out.println("----- Minha Agenda -----");
 
-        minhaAgenda.cadastrarContato("Suzy Hellen",
-                "(13) 9 9877-2311","suzyhellen@gmail.com");
+        boolean programaFinalizado = false;
+        do {
+            System.out.println("Selecione uma das opções abaixo!");
 
-        pulaLinha();
-        minhaAgenda.listarContatos();
+            System.out.println("1. Criar Agenda.");
+            System.out.print("2. Cadastrar novo contato.");
+            System.out.print("3. Editar contato existente.");
+            System.out.print("4. Deletar contato.");
+            System.out.print("5. Listar contatos.");
+            System.out.print("6. Salvar contatos.");
+            System.out.print("7. Carregar contatos.");
+            System.out.print("8. Sair");
 
-        pulaLinha();
-        minhaAgenda.buscarContatoPorNome("David de Oliveira Silva");
-    }
+            int opcao = scan.nextInt();
 
-    public static void pulaLinha() {
-        System.out.println();
+            if (opcao >= 1 && opcao <= 8) {
+
+                switch (opcao) {
+                    case 1:
+                        break;
+                    default:
+                        programaFinalizado = true;
+                        break;
+                }
+            } else {
+                System.out.println("Dados de entrada inválido, por favor! Entre com opção numérica de 1 a 6, conforme o Menu.");
+            }
+
+        } while (!programaFinalizado);
+
     }
 }
